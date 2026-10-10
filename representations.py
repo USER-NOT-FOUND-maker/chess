@@ -1,11 +1,6 @@
 from classes import *
 import pygame
-
-board = []
-
-for f in files:
-    for r in ranks:
-        board.append(square(f,r,ord(f) % 2 == r % 2))
+from pygame import image
 
 # pygame setup
 pygame.init()
@@ -26,6 +21,10 @@ while running:
             pygame.draw.rect(screen, "0xD2B48C", rect)
         else:
             pygame.draw.rect(screen, "0x6F4E37", rect)
+        
+        if i.piece:
+            rep = pygame.image.load(i.piece.rep)
+            screen.blit(rep, rect)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
